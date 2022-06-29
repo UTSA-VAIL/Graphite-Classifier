@@ -189,9 +189,9 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
         #ino, kno = nums.split('_')
         #ino = int(ino)
         #kno = int(kno)
-        img = cv2.imread(f'{data_dir}/Images/{base_name}.png').transpose(2,0,1).reshape(1,3,512,512)
+        img = cv2.imread(f'{data_dir}/Labeled/Images/{base_name}.png').transpose(2,0,1).reshape(1,3,512,512)
 
-        mask = Image.open(f'{data_dir}/Masks/all/{base_name}-label.png').convert("L")
+        mask = Image.open(f'{data_dir}/Labeled/Masks/all/{base_name}-label.png').convert("L")
         mask = (np.asarray(mask)).astype(int).reshape(1,1,512,512)
         with torch.no_grad():
             a = model(torch.from_numpy(img).type(torch.cuda.FloatTensor)/255)

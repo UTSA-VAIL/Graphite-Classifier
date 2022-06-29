@@ -71,7 +71,7 @@ def get_binary_dataloader(data_dir,
 
 def get_multiclass_dataloader(data_dir, 
                             image_folder = 'Labeled/Images',
-                            mask_folder = 'Labeled/Masks',
+                            mask_folder = 'Labeled/Masks/all',
                             fraction = 0.2,
                             batch_size = 4,
                             seed=100,

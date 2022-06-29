@@ -146,7 +146,7 @@ def train_multiclass_model(model, criterion, dataloaders, optimizer, scheduler, 
                 with torch.set_grad_enabled(phase == 'Train'):
                     outputs = model(inputs)
                     #print("Output Shape:", outputs.shape)
-                    #print("Groud Truth Shape: ", masks.shape)
+                    #print("Ground Truth Shape: ", masks.shape)
                     if isinstance(outputs, OrderedDict):
                         outputs = outputs['out']
                     y_pred = outputs
