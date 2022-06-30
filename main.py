@@ -42,7 +42,7 @@ def main():
 
     # Use gpu if available
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
-
+    print("Device: ". device)
     if args.binary:
         jaccard = JaccardIndex(num_classes=2, threshold=threshold, average='weighted').to(device)
     else:

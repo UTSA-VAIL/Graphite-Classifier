@@ -87,7 +87,7 @@ def test_analysis_multi(model, metrics, data_dir, exp_dir, test_imgs, c):
         mask = Image.open(f'{data_dir}/Masks/{c}/{base_name}-label.png').convert("L")
         mask = (np.asarray(mask)/255).astype(int).reshape(1,1,512,512)
         with torch.no_grad():
-            output = model(torch.from_numpy(img).type(torch.cuda.FloatTensor)/255)
+            output = model(torch.from_numpy(img).type(torch.FloatTensor)/255)
         if isinstance(output, OrderedDict):
             output = output['out']
 
@@ -131,7 +131,7 @@ def test_analysis_multi_all(models, metrics, data_dir, exp_dir, test_imgs, thres
             mask = (np.asarray(mask)/255).astype(int).reshape(1,1,512,512)
             model = models[key]
             with torch.no_grad():
-                a = model(torch.from_numpy(img).type(torch.cuda.FloatTensor)/255)
+                a = model(torch.from_numpy(img).type(torch.FloatTensor)/255)
             if isinstance(a, OrderedDict):
                 a = a['out']
             model_output = (a.cpu().detach().numpy()[0][0] > threshold) * key
@@ -194,7 +194,7 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
         mask = Image.open(f'{data_dir}/Masks/{base_name}-label.png').convert("L")
         mask = (np.asarray(mask)).astype(int).reshape(1,1,512,512)
         with torch.no_grad():
-            a = model(torch.from_numpy(img).type(torch.cuda.FloatTensor)/255)
+            a = model(torch.from_numpy(img).type(torch.FloatTensor)/255)
         if isinstance(a, OrderedDict):
             a = a['out']
         model_output = torch.argmax(a.cpu(), dim=1).numpy().squeeze()
