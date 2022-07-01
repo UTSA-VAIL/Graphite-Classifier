@@ -139,6 +139,9 @@ def train_multiclass_model(model, criterion, dataloaders, optimizer, scheduler, 
             # Iterate over data.
             for sample in tqdm(iter(dataloaders[phase])):
                 inputs = sample['image'].to(device)
+
+                #ints = np.array(sample['mask'])
+                #print("Uniqueue in mask:", np.unique(ints))
                 masks = sample['mask'].to(device)
                 # zero the parameter gradients
                 optimizer.zero_grad()

@@ -75,7 +75,11 @@ class SegmentationDataset(VisionDataset):
             if self.mask_color_mode == "rgb":
                 mask = mask.convert("RGB")
             elif self.mask_color_mode == "grayscale":
+                colors = np.array(mask)
+                #print("Colors: ", np.unique(colors))
                 mask = mask.convert("L")
+                colors = np.array(mask)
+            #print("Colors After Convert: ", np.unique(colors))
             sample = {"image": image, "mask": mask}
             if self.transforms:
                 sample["image"] = self.transforms(sample["image"])

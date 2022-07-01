@@ -49,7 +49,7 @@ def create_test_image(img, mask, output, save_path):
     for i in mask:
         test.append(i*100)
     test = np.array(test)
-    print(np.unique(test))
+    #print(np.unique(test))
     #print("Mask: ", mask)
     #print("Colorized mask: ", colorized_mask)
     plt.imshow(colorized_mask)

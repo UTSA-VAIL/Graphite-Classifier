@@ -25,7 +25,7 @@
 python3 main.py \
 --data_dir=Data \
 --exp_dir=./Graphite_ignore \
---epochs=1 \
+--epochs=15 \
 --model=resnet18 \
 --batch_size=16 \
 --num_classes=3 \
