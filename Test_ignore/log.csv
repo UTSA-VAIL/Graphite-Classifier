@@ -1,0 +1,2 @@
+epoch,Train_loss,Validation_loss,Train_miou,Validation_miou
+1,0.7847,0.841,0.4746,0.5834

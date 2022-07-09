@@ -10,7 +10,7 @@ import segmentation_models_pytorch as smp
 
 def deeplabv3(outputchannels=1):
 
-    model = models.segmentation.deeplabv3_resnet101(pretrained=True,
+    model = models.segmentation.deeplabv3_resnet101(pretrained=False,
                                                     progress=True)
     model.classifier = DeepLabHead(2048, outputchannels)
     return model

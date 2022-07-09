@@ -25,6 +25,7 @@ def get_args():
     parser.add_argument("--save_model", default=True, type=bool)
     parser.add_argument("--num_classes", default=4, type=int)
     parser.add_argument("--model_type", default='resnet152', type=str)
+    parser.add_argument("--load_model", dest='load', action='store_true')
     parser.add_argument("--no-binary", dest='binary', action='store_false')
     parser.set_defaults(binary=True)
     args = parser.parse_args()
@@ -52,7 +53,14 @@ def main():
                 #might add more later
                 }
 
-    if args.binary is True:
+    if args.load is True:
+        model = torch.load('weights/8319.pt')
+        print("Loaded model")
+        dataloaders, test_images = datahandler.get_multiclass_dataloader(data_dir, batch_size=args.batch_size, seed=50, num_classes=args.num_classes)
+        print("Testing Model")
+        test_analysis_multi_all_nonbinary(model, jaccard_test_all, data_dir, exp_dir, test_images, threshold)
+
+    elif args.binary is True:
         models = {}
         mious = []
         dataloaders, test_images = datahandler.get_binary_dataloader(data_dir, args.num_classes, batch_size=args.batch_size, seed=100)
