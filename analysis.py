@@ -1,5 +1,6 @@
 
 
+from cgi import test
 from typing import OrderedDict
 import torch
 import matplotlib.pyplot as plt
@@ -36,7 +37,7 @@ palette = np.array([
 
 
 def create_test_image(img, mask, output, save_path):
-    print(f'Generating Test image: {save_path}')
+    #print(f'Generating Test image: {save_path}')
     plt.figure(figsize=(10,10))
     plt.subplot(131)
     plt.imshow(img[0,...].transpose(1,2,0))
@@ -189,6 +190,15 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
         shutil.rmtree(all_path)
     os.mkdir(all_path)
 
+    #Custom Test inputs
+    
+    '''
+    data_dir = "test"
+    test_imgs = []
+    for i in os.listdir(data_dir+"/Images"):
+        test_imgs.append(i)
+    '''
+
     ious = []
     for image in test_imgs:
         image = pathlib.Path(image).stem
@@ -197,6 +207,8 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
         #ino, kno = nums.split('_')
         #ino = int(ino)
         #kno = int(kno)
+
+        print(f'{data_dir}/Images/{base_name}.png')
         img = cv2.imread(f'{data_dir}/Images/{base_name}.png').transpose(2,0,1).reshape(1,3,512,512)
 
         mask = Image.open(f'{data_dir}/Masks/{base_name}-label.png').convert("L")
@@ -218,6 +230,8 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
         iou = metrics(y_pred, y_true)
         ious.append(iou)
         print(f"iou: {round(iou.item(), 4)}")
+
+
         #print(torch.argmax(y_pred, dim=1))
         #print(y_true)
         #print(f"'{image.replace('images', 'test')}.png' - Test IoU: {miou:.4f}")
@@ -234,7 +248,8 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
     print(f"\nMean Intersection Over Union of Test Samples: {round(float(miou), 4)}")
 
 
-
+def testModel(path):
+    model = torch.load(path)
 
 
 
