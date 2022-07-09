@@ -10,14 +10,14 @@ import segmentation_models_pytorch as smp
 
 def deeplabv3(outputchannels=1):
 
-    model = models.segmentation.deeplabv3_resnet101(pretrained=True,
+    model = models.segmentation.deeplabv3_resnet101(pretrained=False,
                                                     progress=True)
     model.classifier = DeepLabHead(2048, outputchannels)
     return model
 
 def resnet18(outputchannels=1):
     model = smp.Unet()
-    model = smp.Unet('resnet18', encoder_weights='imagenet', classes=outputchannels)
+    model = smp.Unet('resnet18', encoder_weights=None, classes=outputchannels)
     return model
 
 def resnet152(outputchannels=1):

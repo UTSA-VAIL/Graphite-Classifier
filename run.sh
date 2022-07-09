@@ -25,9 +25,11 @@
 python3 main.py \
 --data_dir=Data \
 --exp_dir=./Graphite_ignore \
---epochs=20 \
+--epochs=30 \
 --model=resnet18 \
---batch_size=100 \
+--batch_size=16 \
 --num_classes=3 \
 --no-binary \
 #--load_model \
+
+#watch -d -n 0.5 nvidia-smi

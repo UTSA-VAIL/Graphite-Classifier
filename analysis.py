@@ -192,12 +192,12 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
 
     #Custom Test inputs
     
-    '''
+    
     data_dir = "test"
     test_imgs = []
     for i in os.listdir(data_dir+"/Images"):
         test_imgs.append(i)
-    '''
+    
 
     ious = []
     for image in test_imgs:
