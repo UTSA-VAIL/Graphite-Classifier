@@ -192,12 +192,12 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
 
     #Custom Test inputs
     
-    
+    '''
     data_dir = "test"
     test_imgs = []
     for i in os.listdir(data_dir+"/Images"):
         test_imgs.append(i)
-    
+    '''
 
     ious = []
     for image in test_imgs:
@@ -208,7 +208,7 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
         #ino = int(ino)
         #kno = int(kno)
 
-        #print(f'{data_dir}/Images/{base_name}.png')
+        print(f'{data_dir}/Images/{base_name}.png')
         img = cv2.imread(f'{data_dir}/Images/{base_name}.png').transpose(2,0,1).reshape(1,3,512,512)
 
         mask = Image.open(f'{data_dir}/Masks/{base_name}-label.png').convert("L")
@@ -229,7 +229,7 @@ def test_analysis_multi_all_nonbinary(model, metrics, data_dir, exp_dir, test_im
         y_pred = a.cpu()
         iou = metrics(y_pred, y_true)
         ious.append(iou)
-        #print(f"iou: {round(iou.item(), 4)}")
+        print(f"iou: {round(iou.item(), 4)}")
 
 
         #print(torch.argmax(y_pred, dim=1))

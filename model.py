@@ -17,7 +17,7 @@ def deeplabv3(outputchannels=1):
 
 def resnet18(outputchannels=1):
     model = smp.Unet()
-    model = smp.Unet('resnet18', encoder_weights=None, classes=outputchannels)
+    model = smp.Unet('resnet18', encoder_weights='imagenet', classes=outputchannels)
     return model
 
 def resnet152(outputchannels=1):

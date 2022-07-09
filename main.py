@@ -54,7 +54,7 @@ def main():
                 }
 
     if args.load is True:
-        model = torch.load('Graphite_ignore/weights.pt')
+        model = torch.load('weights/8319.pt')
         print("Loaded model")
         dataloaders, test_images = datahandler.get_multiclass_dataloader(data_dir, batch_size=args.batch_size, seed=50, num_classes=args.num_classes)
         print("Testing Model")
