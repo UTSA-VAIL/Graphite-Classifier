@@ -74,7 +74,7 @@ def get_binary_dataloader(data_dir,
 def get_multiclass_dataloader(data_dir, 
                             image_folder = './Data/Images/',
                             mask_folder = './Data/Masks/',
-                            fraction = 0.2,
+                            fraction = 0.1,
                             batch_size = 4,
                             seed=100,
                             num_classes=None):
@@ -110,11 +110,7 @@ def get_multiclass_dataloader(data_dir,
                             transforms=data_transforms,
                             num_classes=num_classes)
     }
-    #print()
-    #print()
-    #print("Image Datasets: ", image_datasets['Train'])
-    #print()
-    #print()
+
     dataloaders = {
         'Train': DataLoader(image_datasets['Train'],
                     batch_size=batch_size,

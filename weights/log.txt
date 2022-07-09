@@ -1,0 +1,5 @@
+.8319
+Validation Loss: 0.2500
+{'epoch': 10, 'Train_loss': 0.2565, 'Validation_loss': 0.25, 'Train_miou': 0.849, 'Validation_miou': 0.8546}
+epochs: 10, batch:100, model:resnet18, test: original 287 images
+

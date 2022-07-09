@@ -15,8 +15,6 @@ import torch.nn.functional as F
 from helper import one_hot
 from torch import nn
 
-criteriaa = nn.CrossEntropyLoss()
-
 threshold = 0.0
 
 
