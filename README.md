@@ -7,12 +7,12 @@ A docker file is included to set up the environment.
 ## Preparing dataset
 Download the Graphite 23 dataset. \
 Then run the graphite_preprocessing.py script, passing the Path to the dataset as an arument. \
-Once the script is finished, there will be a new directory in the dataset called Tiles, that contains the dataset images and labels split into smaller more manageble tiles (default 384x384). These are the images and labels that the model will train and evaluate on.
+Once the script is finished, there will be a new directory in the dataset called "processed". This directory conatins all all the cleaned up images and labels, as well as a directory called "Tiles" that contains the dataset images and labels split into smaller more manageble tiles (default 384x384). These are the images and labels that the model will train and evaluate on.
 
 ## Training
 Run dist_run.sh bash script. This will perform a distributed data parallel run on multiple GPUs. Default file is set to run on 2 GPU's, you can edit the bash script to change this number. 
 
-**--data_dir**    : Path to the directory containing your image and label tiles\
+**--data_dir**    : Path to the directory containing your image and label tiles. After running the graphite_prepocessing script, this should be the {dataset_path}/processed/Tiles/ directory.\
 **--exp_dir**     : Path to your experiment directory. A new directory inside of this directory will be automatically created (or overwritten if it already exists), whose name will be a combination of the various settings listed below. This is where the log of your run, the model weights, and test results will be saved to. This is to help keep experiments with different settings separate from one another. \
 **--epochs**     : Number of epochs to train on\
 **--batch_size**  : The size of a single training batch.\
