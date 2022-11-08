@@ -1,10 +1,10 @@
 # Graphite_Classifier
 This is the repository for a UNet-based deep-learning semantic segmentation classifier intended for use with the Graphite 23 nuclear materials dataset.
 
-# Prerequisites
+## Environment
 A docker file is included to set up the environment.
 
-# Training
+## Training
 Run dist_run.sh bash script. This will perform a distributed data parallel run on multiple GPUs. Default file is set to run on 2 GPU's, you can edit the bash script to change this number. \
 **--data_dir**    : Path to the directory containing your image and label tiles\
 **--exp_dir**     : Path to your experiment directory. This is where the log of your run, the model weights, and test results will go.\
@@ -20,7 +20,7 @@ Run dist_run.sh bash script. This will perform a distributed data parallel run o
 **--enable_cw**   : Enables using class weights as part of the categorical cross entropy loss calculation. Disabled by default.
 
 
-# Testing
+## Testing
 Run test.sh bash script. \
 **--eval**        : Sets the run in Test mode, changing the behavior of some of the above arguments. Changes are listed below.\
 **--exp_dir**     : Path to the directory containing the trained model weights your test will use.\
