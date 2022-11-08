@@ -52,7 +52,7 @@ def get_args():
     parser.add_argument("--batch_size",default=4, type=int)
     parser.add_argument("--save_model", default=True, type=bool)
     parser.add_argument("--num_classes", default=4, type=int)
-    parser.add_argument("--model_type", default='resnet18', type=str)
+    parser.add_argument("--model", default='resnet18', type=str)
     parser.add_argument("--mode", dest='mode', default='supervised', type=str)
     parser.add_argument("--image-size", dest='size', default=512, type=int)
     parser.add_argument("--seed", dest='seed', default=100, type=int)
@@ -88,7 +88,7 @@ def main(args):
             test_analysis(model, jaccard, data_dir, exp_dir, test_images, args.size)
         return
 
-    path_list = [args.exp_dir, args.model_type, args.mode, str(args.seed)+'s', str(args.epochs)+'e']
+    path_list = [args.exp_dir, args.model, args.mode, str(args.seed)+'s', str(args.epochs)+'e']
     if args.enable_cw:
         path_list.append("cw")
     if args.distributed:
@@ -99,7 +99,7 @@ def main(args):
         exp_dir.mkdir()
 
 
-    model = get_model(args.model_type, outputchannels=args.num_classes)
+    model = get_model(args.model, outputchannels=args.num_classes)
     model = model.cuda()
     if distributed:
         model = torch.nn.parallel.DistributedDataParallel(model, device_ids=[local_rank], output_device=local_rank)
