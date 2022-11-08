@@ -1,5 +1,5 @@
 # Graphite_Classifier
-This is the repository for a UNet-based deep-learning semantic segmentation classifier intended for use with the Graphite 23 nuclear materials dataset.
+This is the repository for a UNet-based deep-learning semantic segmentation classifier intended for classifying the Graphite 23 nuclear materials dataset.
 
 ## Environment
 A docker file is included to set up the environment.
