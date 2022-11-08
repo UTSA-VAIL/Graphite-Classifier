@@ -3,6 +3,7 @@ import torch
 from sklearn.utils import class_weight
 import copy
 from itertools import tee
+import torch.nn.functional as F
 
 def per_class_mIoU(targets, predictions, info=False): 
     unique_labels = np.unique(targets)
@@ -19,54 +20,19 @@ def per_class_mIoU(targets, predictions, info=False):
     return np.average(ious)
 
 
-def get_binary_class_weights(train_dataloader):
-    num_pos = 0
-    num_neg = 0
-    for batch in train_dataloader:
-        pos = torch.sum(batch['mask'])
-        num_neg += torch.sum(torch.ones_like(batch['mask'])) - pos
-        num_pos += pos
-
-    c_weights = num_neg / num_pos
-        
-    return c_weights
-
 
 def get_multi_class_weights(train_dataloader, num_classes):
-    print(num_classes)
-    weights = []
-    for c in range(0, num_classes):
-        num_pos = 0
-        num_neg = 0
-        for batch in train_dataloader:
-            print(c, torch.unique(batch['mask'], return_counts=True))
-            pos = torch.sum(batch['mask'])
-            num_neg += torch.sum(torch.ones_like(batch['mask'])) - pos
-            num_pos += pos
+    #get class weights
+    total_counts = np.zeros(num_classes)
+    for batch in train_dataloader:
+        sample = batch['mask']
+        class_sample_count = np.unique(sample, return_counts=True)[1]
+        total_counts += class_sample_count
+    print(total_counts / total_counts.sum())
+    class_weights = torch.FloatTensor(total_counts.sum() / (total_counts * num_classes)).cuda()
+    class_weights = F.normalize(class_weights, dim=0)
+    print(class_weights)
+    return class_weights
 
-        #weights.append(num_neg / num_pos)
-    
-    return (weights)
-
-
-def one_hot(targets, num_classes):  
-    # targets_extend=targets.clone()
-    # #targets_extend.unsqueeze_(1) # convert to Nx1xHxW
-    # one_hot = torch.FloatTensor(targets_extend.size(0), num_classes, targets_extend.size(2), targets_extend.size(3)).zero_()
-    # one_hot.scatter_(1, targets_extend, 1) 
-    # return one_hot
-
-    _, height, width = targets.shape
-    one_hot = torch.zeros(num_classes, height, width)
-    #print(one_hot.shape, targets.shape)
-    return one_hot.scatter_(1, targets, 1.0)
-
-
-def one_hot_numpy(targets, num_classes):
-    b = np.zeros((num_classes, targets.size[0], targets.size[1]))
-    b[np.arange(targets.size), targets] = 1
-    one_hot_tensor = torch.from_numpy(b) 
-    one_hot_tensor.requires_grad=True
-    return one_hot_tensor
 
 
