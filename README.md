@@ -6,6 +6,7 @@ A docker file is included to set up the environment.
 
 ## Training
 Run dist_run.sh bash script. This will perform a distributed data parallel run on multiple GPUs. Default file is set to run on 2 GPU's, you can edit the bash script to change this number. \
+
 **--data_dir**    : Path to the directory containing your image and label tiles\
 **--exp_dir**     : Path to your experiment directory. This is where the log of your run, the model weights, and test results will go.\
 **--epochs**     : Number of epochs to train on\
@@ -22,6 +23,7 @@ Run dist_run.sh bash script. This will perform a distributed data parallel run o
 
 ## Testing
 Run test.sh bash script. \
+
 **--eval**        : Sets the run in Test mode, changing the behavior of some of the above arguments. Changes are listed below.\
 **--exp_dir**     : Path to the directory containing the trained model weights your test will use.\
 **--num_classes** : Needs to match the number of classes the model was trained on\
@@ -31,9 +33,10 @@ Run test.sh bash script. \
 
 When running a test, the test images are run through the trained model and their respective labels are used as the ground truth to determine the Intersection Over Union score for each image. Mean Intersection Over Union is computed across all test images.\
 For each test image, the original image, groun truth label and predicted image is saved as a single file inside your experiment directory for human readability and result comparison.\
+
 Note: a test run is automatically done after a training run.
 
-# Supported UNet backbones
+## Supported UNet backbones
 For the --model argument the code supports the following inputs:\
 'vgg11',\
 'vgg19',\
