@@ -1,8 +1,8 @@
 # Graphite_Classifier
-This is the repository for a UNet-based deep-learning semantic segmentation classifier intended for use with the Graphite 23 nuclear materials dataset.\
+This is the repository for a UNet-based deep-learning semantic segmentation classifier intended for use with the Graphite 23 nuclear materials dataset.
 
 # Prerequisites
-A docker file is included to set up the environment.\
+A docker file is included to set up the environment.
 
 # Training
 Run dist_run.sh bash script. This will perform a distributed data parallel run on multiple GPUs. Default file is set to run on 2 GPU's, you can edit the bash script to change this number. \
@@ -17,7 +17,7 @@ Run dist_run.sh bash script. This will perform a distributed data parallel run o
 --distributed : Sets the run to use multi-GPU training \
 --save-model  : Saves the model weights to the experiment directory. Default True.\
 --mode        : 'supervised or 'semi'. Currently only supervised learning is supported.\
---enable_cw   : Enables using class weights as part of the categorical cross entropy loss calculation. Disabled by default.\
+--enable_cw   : Enables using class weights as part of the categorical cross entropy loss calculation. Disabled by default.
 
 
 #Testing
@@ -30,7 +30,7 @@ Run test.sh bash script. \
 --image-size  : Same as above. Must match the same image size used in training.\
 
 After when running a test, the test images are run through the trained model and their respective labels are used as the ground truth to determine the Intersection Over Union score for each image. Mean Intersection Over Union is computed across all test images.\
-For each test image, the original image, groun truth label and predicted image is saved as a single file inside your experiment directory for human readability and result comparison.\
+For each test image, the original image, groun truth label and predicted image is saved as a single file inside your experiment directory for human readability and result comparison.
 
 # Supported UNet backbones
 For the --model argument the code supports the following inputs:\
