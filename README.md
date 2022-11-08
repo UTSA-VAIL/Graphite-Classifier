@@ -4,6 +4,11 @@ This is the repository for a UNet-based deep-learning semantic segmentation clas
 ## Environment
 A docker file is included to set up the environment.
 
+## Preparing dataset
+Download the Graphite 23 dataset. \
+Then run the graphite_preprocessing.py script, passing the Path to the dataset as an arument. \
+Once the script is finished, there will be a new directory in the dataset called Tiles, that contains the dataset images and labels split into smaller more manageble tiles (default 384x384). These are the images and labels that the model will train and evaluate on.
+
 ## Training
 Run dist_run.sh bash script. This will perform a distributed data parallel run on multiple GPUs. Default file is set to run on 2 GPU's, you can edit the bash script to change this number. 
 
