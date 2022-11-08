@@ -29,7 +29,7 @@ Run test.sh bash script.
 **--num_classes** : Needs to match the number of classes the model was trained on\
 **--distributed** : If the model was trained on multi-GPU, the test must also be multi-GPU and vice versa\
 **--seed**        : Used to determine what images to use for the test. Ideally this should match seed you used used for the model training, so that the model is not testing on images it trained on.\
-**--image-size**  : Same as above. Must match the same image size used in training.\
+**--image-size**  : Same as above. Must match the same image size used in training.
 
 When running a test, the test images are run through the trained model and their respective labels are used as the ground truth to determine the Intersection Over Union score for each image. Mean Intersection Over Union is computed across all test images.\
 For each test image, the original image, groun truth label and predicted image is saved as a single file inside your experiment directory for human readability and result comparison.
