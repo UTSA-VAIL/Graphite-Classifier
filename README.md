@@ -29,8 +29,9 @@ Run test.sh bash script. \
 **--seed**        : Used to determine what images to use for the test. Ideally this should match seed you used used for the model training, so that the model is not testing on images it trained on.\
 **--image-size**  : Same as above. Must match the same image size used in training.\
 
-After when running a test, the test images are run through the trained model and their respective labels are used as the ground truth to determine the Intersection Over Union score for each image. Mean Intersection Over Union is computed across all test images.\
-For each test image, the original image, groun truth label and predicted image is saved as a single file inside your experiment directory for human readability and result comparison.
+When running a test, the test images are run through the trained model and their respective labels are used as the ground truth to determine the Intersection Over Union score for each image. Mean Intersection Over Union is computed across all test images.\
+For each test image, the original image, groun truth label and predicted image is saved as a single file inside your experiment directory for human readability and result comparison.\
+Note: a test run is automatically done after a training run.
 
 # Supported UNet backbones
 For the --model argument the code supports the following inputs:\
