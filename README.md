@@ -20,7 +20,7 @@ Run dist_run.sh bash script. This will perform a distributed data parallel run o
 --enable_cw   : Enables using class weights as part of the categorical cross entropy loss calculation. Disabled by default.
 
 
-#Testing
+# Testing
 Run test.sh bash script. \
 --eval        : Sets the run in Test mode, changing the behavior of some of the above arguments. Changes are listed below.\
 --exp_dir     : Path to the directory containing the trained model weights your test will use.\
