@@ -1,15 +1,3 @@
-# FROM tensorflow/tensorflow:latest-gpu
-
-# RUN apt install -y libgl1-mesa-glx
- 
-# # Install needed libraries
-# COPY ./requirements.txt /tmp
-# RUN python -m pip install -r /tmp/requirements.txt
-
-
-
-# BASE CONTAINER
-#FROM pytorch/pytorch:1.9.0-cuda10.2-cudnn7-runtime
 FROM pytorch/pytorch:latest
 
 # APT INSTALLS
