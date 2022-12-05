@@ -1,6 +1,11 @@
 # Graphite_Classifier
 This is the repository for a UNet-based deep-learning semantic segmentation classifier intended for classifying the Graphite 23 nuclear materials dataset.
 
+Authors: Christopher Snyder, David Patrick, Amanda Fernandez \
+Vision & Artificial Intelligence Lab \
+University of Texas at San Antonio \
+http://www.cs.utsa.edu/~fernandez/vail.html 
+
 ## Environment
 A docker file is included to set up the environment.
 
