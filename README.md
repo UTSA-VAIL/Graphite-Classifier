@@ -4,7 +4,27 @@ This is the repository for a UNet-based deep-learning semantic segmentation clas
 Authors: Christopher Snyder, David Patrick, Amanda Fernandez \
 Vision & Artificial Intelligence Lab \
 University of Texas at San Antonio \
-http://www.cs.utsa.edu/~fernandez/vail.html 
+[https://sites.google.com/view/amandafernandez/research/vision-ai-lab](https://sites.google.com/view/amandafernandez/research/vision-ai-lab)
+
+
+## Citations
+Paper: \
+@ARTICLE{graphite23access, \
+  author={Snyder, Christopher and Montoya, Katherine and Patrick, David and Stone, Jordan and Mohanadhas, Daniel and Sooby, Elizabeth and Fernandez, Amanda S}, \
+  journal={IEEE Access, accepted}, \
+  title={Semantic Segmentation of Micrographs for Nuclear Fuel Analysis and Degradation Quantification}, \
+  year={2023} } 
+
+
+Dataset: \
+@data{e83r-vg74-23,
+doi = {10.21227/e83r-vg74}, \
+url = {https://dx.doi.org/10.21227/e83r-vg74}, \
+author = {Snyder, Christopher and Montoya, Katherine and Stone, Jordan and Sooby, Elizabeth and Fernandez, Amanda S}, \
+publisher = {IEEE Dataport}, \
+title = {Graphite-23 Dataset for Semantic Segmentation of Nuclear Fuel Micrographs}, \
+year = {2023} } 
+
 
 ## Environment
 A docker file is included to set up the environment.
